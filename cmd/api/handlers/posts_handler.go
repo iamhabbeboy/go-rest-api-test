@@ -13,7 +13,10 @@ func PostIndexHandler(c echo.Context) error {
 	if err != nil {
 		c.String(http.StatusBadGateway, "Unable to process data")
 	}
-	return c.JSON(http.StatusOK, data)
+	res := make(map[string]any)
+	res["status"] = "ok"
+	res["data"] = data
+	return c.JSON(http.StatusOK, res)
 }
 
 func PostSingleHandler(c echo.Context) error {
@@ -26,5 +29,8 @@ func PostSingleHandler(c echo.Context) error {
 	if err != nil {
 		c.String(http.StatusBadGateway, "Unable to process data")
 	}
-	return c.JSON(http.StatusOK, data)
+	res := make(map[string]any)
+	res["status"] = "ok"
+	res["data"] = data
+	return c.JSON(http.StatusOK, res)
 }
